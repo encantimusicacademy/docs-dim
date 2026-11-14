@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Docs Dim</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <svg class="defs" aria-hidden="true" width="0" height="0">
+    <filter id="preview-filter" color-interpolation-filters="sRGB">
+      <feColorMatrix id="preview-matrix" type="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+    </filter>
+  </svg>
+
+  <header class="bar">
+    <h1>Docs Dim</h1>
+    <label class="switch">
+      <input type="checkbox" id="enabled" role="switch">
+      <span class="track" aria-hidden="true"></span>
+      <span class="visually-hidden">Dim Google Docs</span>
+    </label>
+  </header>
+
+  <main>
+    <figure class="preview" id="preview" aria-hidden="true">
+      <div class="page">
+        <p>The file keeps black text on white. This is how it reads on your screen, <a>links</a> and <mark>highlights</mark> included.</p>
+      </div>
+    </figure>
+
+    <div class="presets" id="presets" role="group" aria-label="Built-in presets"></div>
+
+    <fieldset class="custom">
+      <legend class="visually-hidden">Custom colours</legend>
+      <div class="row">
+        <label for="bg-color">Background</label>
+        <input type="color" id="bg-color">
+        <input type="text" class="hex" id="bg-hex" maxlength="7" spellcheck="false" autocomplete="off" aria-label="Background hex">
+      </div>
+      <div class="row">
+        <label for="fg-color">Text</label>
+        <input type="color" id="fg-color">
+        <input type="text" class="hex" id="fg-hex" maxlength="7" spellcheck="false" autocomplete="off" aria-label="Text hex">
+      </div>
+    </fieldset>
+
+    <section class="mine" aria-labelledby="mine-title">
+      <h2 id="mine-title">Your presets</h2>
+      <div class="presets" id="custom-presets" role="group" aria-labelledby="mine-title"></div>
+      <p class="empty" id="custom-empty">Set the colours above, then save them here to switch back in one click.</p>
+
+      <button type="button" class="save-start" id="save-start">Save current colours</button>
+      <form class="save-row" id="save-row" hidden>
+        <input type="text" id="save-name" maxlength="24" spellcheck="false" autocomplete="off" aria-label="Preset name">
+        <button type="submit" class="btn primary">Save</button>
+        <button type="button" class="btn" id="save-cancel">Cancel</button>
+      </form>
+      <p class="status" id="status" role="status"></p>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
